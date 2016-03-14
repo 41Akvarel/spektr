@@ -13,13 +13,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
+/**
+ *
+ * @author км
+ */
 public class Spektr extends JFrame {
     private JPanel panel = new JPanel();
     private JPanel panel2 = new JPanel(new GridLayout(5, 5, 2, 2));    
     private int[][] numbers = new int[5][5];    
+
+    /**
+     *
+     */
     public  Spektr()//создание интерфейса игры
     {
-        super("Спектр ");
+        super("Спектр");
         panel.setLayout(null);        
         getContentPane().setBackground(new Color(255, 255, 255));      
         int screenheight;
@@ -48,6 +56,91 @@ public class Spektr extends JFrame {
         add(panel);
         add(panel2);        
     }
+    
+    public void ColorButton(int number, JButton but)
+    {
+        switch(number)
+        {
+            case 1:
+                but.setBackground(new Color(255, 0, 0));
+                break;
+                case  2:
+                    but.setBackground(new Color(252, 41, 0));
+                    break;
+                case 3:
+                    but.setBackground(new Color(255, 89, 0));
+                    break;
+                case 4:
+                    but.setBackground(new Color(255, 138, 0));
+                    break;
+                case 5:
+                    but.setBackground(new Color(255, 165, 0));
+                    break;
+                case 6:
+                    but.setBackground(new Color(255, 200, 0));
+                    break;
+                case 7:
+                    but.setBackground(new Color(255, 225, 0));
+                    break;
+                case 8:
+                    but.setBackground(new Color(255, 245, 0));
+                    break;
+                case 9:
+                    but.setBackground(new Color(255, 255, 0));
+                    break;
+                case 10:
+                    but.setBackground(new Color(200, 255, 7));
+                    break;
+                case 11:
+                    but.setBackground(new Color(173, 255, 47));
+                    break;
+                case 12:
+                    but.setBackground(new Color(0, 200, 0));
+                    break;
+                case 13:
+                    but.setBackground(new Color(0, 161, 0));
+                    break;
+                case 14:
+                    but.setBackground(new Color(0, 144, 0));
+                    break;
+                case 15:
+                    but.setBackground(new Color(0, 144, 144));
+                    break;
+                case 16:
+                    but.setBackground(new Color(0, 161, 207));
+                    break;
+                case 17:
+                    but.setBackground(new Color(0, 0, 255));
+                    break;
+                case 18:
+                    but.setBackground(new Color(0, 0, 207));
+                    break;
+                case 19:
+                    but.setBackground(new Color(136, 0, 200));
+                    break;
+                case 20:
+                    but.setBackground(new Color(161, 0, 192));
+                    break;
+                case 21:
+                    but.setBackground(new Color(161, 0, 161));
+                    break;
+                case 22:
+                    but.setBackground(new Color(120, 0, 120));
+                    break;
+                case 23:
+                    but.setBackground(new Color(80, 0, 80));
+                    break;
+                case 24:
+                    but.setBackground(new Color(136, 0, 80));
+                    break;         
+        }
+                
+    }
+    /**
+     * nbnb
+     * @param button_height hghg1hh
+     * @param button_width mbjbj
+     */
     public void DrawField(int button_height, int button_width) //Отображение на экране заданного поля
     {
         int k = 1;
@@ -62,102 +155,7 @@ public class Spektr extends JFrame {
             for (int j = 0; j < 5; j++) {
               JButton button;
                 button = new JButton( Integer.toString(numbers[i][j]));
-                if (numbers[i][j] == 1)
-                {
-                    button.setBackground(new Color(255, 0, 0));                    
-                }
-                if (numbers[i][j] == 2)
-                {
-                    button.setBackground(new Color(252, 41, 0));                    
-                }
-                if (numbers[i][j] == 3)
-                {
-                    button.setBackground(new Color(255, 89, 0));                    
-                }
-                if (numbers[i][j] == 4)
-                {
-                    button.setBackground(new Color(255, 138, 0));                    
-                }
-                if (numbers[i][j] == 5)
-                {
-                    button.setBackground(new Color(255, 165, 0));                    
-                }
-                if (numbers[i][j] == 6)
-                {
-                    button.setBackground(new Color(255, 200, 0));                    
-                }
-                if (numbers[i][j] == 7)
-                {
-                    button.setBackground(new Color(255, 225, 0));                    
-                }
-                if (numbers[i][j] == 8)
-                {
-                    button.setBackground(new Color(255, 245, 0));                    
-                }
-                if (numbers[i][j] == 9)
-                {
-                    button.setBackground(new Color(255, 255, 0));                    
-                }
-                if (numbers[i][j] == 10)
-                {
-                    button.setBackground(new Color(200, 255, 7));                    
-                }
-                if (numbers[i][j] == 11)
-                {
-                    button.setBackground(new Color(173, 255, 47));                    
-                }
-                if (numbers[i][j] == 12)
-                {
-                    button.setBackground(new Color(0, 200, 0));                    
-                }
-                if (numbers[i][j] == 13)
-                {
-                    button.setBackground(new Color(0, 161, 0));                    
-                }
-                if (numbers[i][j] == 14)
-                {
-                    button.setBackground(new Color(0, 144, 0));                    
-                }
-                if (numbers[i][j] == 15)
-                {
-                    button.setBackground(new Color(0, 144, 144));                    
-                }
-                if (numbers[i][j] == 16)
-                {
-                    button.setBackground(new Color(0, 161, 207));                    
-                }
-                if (numbers[i][j] == 17)
-                {
-                    button.setBackground(new Color(0, 0, 255));                    
-                }
-                if (numbers[i][j] == 18)
-                {
-                    button.setBackground(new Color(0, 0, 207));                    
-                }
-                if (numbers[i][j] == 19)
-                {
-                    button.setBackground(new Color(136, 0, 200));                    
-                }
-                if (numbers[i][j] == 20)
-                {
-                    button.setBackground(new Color(161, 0, 192));                    
-                }
-                if (numbers[i][j] == 21)
-                {
-                    button.setBackground(new Color(161, 0, 161));                    
-                }
-                if (numbers[i][j] == 22)
-                {
-                    button.setBackground(new Color(120, 0, 120));                    
-                }
-                if (numbers[i][j] == 23)
-                {
-                    button.setBackground(new Color(80, 0, 80));                    
-                }
-                if (numbers[i][j] == 24)
-                {
-                    button.setBackground(new Color(136, 0, 80));                    
-                }               
+                ColorButton(numbers[i][j], button);
                 button.setFocusable(false);
                 panel2.add(button);
                 if (numbers[i][j] == 25) {
@@ -170,6 +168,10 @@ public class Spektr extends JFrame {
         panel2.validate();
         panel2.repaint();       
     }
+    /**
+     * 
+     * @param args 
+     */
     public static void main(String[] args) {
         JFrame app = new Spektr();        
         app.setVisible(true);
