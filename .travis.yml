@@ -1,5 +1,5 @@
 language: java 
-
+cache: bundler
 addons:
  ssh_known_hosts: git@github.com:41Akvarel/spektr.git
 
