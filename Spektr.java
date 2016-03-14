@@ -19,7 +19,7 @@ public class Spektr extends JFrame {
     private int[][] numbers = new int[5][5];    
     public  Spektr()//создание интерфейса игры
     {
-        super("Спектр");
+        super("Спектр ");
         panel.setLayout(null);        
         getContentPane().setBackground(new Color(255, 255, 255));      
         int screenheight;
