@@ -155,13 +155,6 @@ public class Spektr extends JFrame {
      */
     public void DrawField(int button_height, int button_width) //Отображение на экране заданного поля
     {
-//        int k = 1;
-//        for (int i = 0; i < 5; i++) {
-//            for (int j = 0; j < 5; j++) {
-//                numbers[i][j] = k;
-//                k++;
-//            }
-//        }
         panel2.removeAll();
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
@@ -172,7 +165,8 @@ public class Spektr extends JFrame {
                 panel2.add(button);
                 if (numbers[i][j] == 0) {
                     button.setVisible(false);
-                }
+                } else
+                    button.addActionListener(new ClickListener());
             }
         }
         panel2.setBackground(new Color(255, 255, 255));
@@ -362,6 +356,19 @@ public class Spektr extends JFrame {
             auto_move();
         }
     }
+    
+    private class ClickListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            JButton button = (JButton) e.getSource();
+            button.setVisible(false);
+            String name = button.getText();
+            change(Integer.parseInt(name));
+        }
+
+        private void change(int parseInt) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+    }    
     
     /**
      * 
