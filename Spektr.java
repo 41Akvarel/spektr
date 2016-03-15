@@ -49,14 +49,24 @@ public class Spektr extends JFrame {
         container.add(panel2);
         panel.setBackground(new Color(255, 255, 255));
         panel.validate();
-        panel.repaint();          
+        panel.repaint();
+        generate();
         DrawField(button_height, button_width);
         setLayout(null);
         panel.setBounds(0, 0, button_width * 3, button_height);        
         add(panel);
-        add(panel2);        
+        add(panel2);     
+        
+        
+    
     }
     
+    
+    /**
+     * Задаем цвет для кнопок
+     * @param number номер кнопки
+     * @param but кнопка
+     */
     public void ColorButton(int number, JButton but)
     {
         switch(number)
@@ -136,6 +146,8 @@ public class Spektr extends JFrame {
         }
                 
     }
+    
+
     /**
      * nbnb
      * @param button_height hghg1hh
@@ -143,13 +155,13 @@ public class Spektr extends JFrame {
      */
     public void DrawField(int button_height, int button_width) //Отображение на экране заданного поля
     {
-        int k = 1;
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                numbers[i][j] = k;
-                k++;
-            }
-        }
+//        int k = 1;
+//        for (int i = 0; i < 5; i++) {
+//            for (int j = 0; j < 5; j++) {
+//                numbers[i][j] = k;
+//                k++;
+//            }
+//        }
         panel2.removeAll();
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
@@ -158,7 +170,7 @@ public class Spektr extends JFrame {
                 ColorButton(numbers[i][j], button);
                 button.setFocusable(false);
                 panel2.add(button);
-                if (numbers[i][j] == 25) {
+                if (numbers[i][j] == 0) {
                     button.setVisible(false);
                 }
             }
@@ -168,6 +180,189 @@ public class Spektr extends JFrame {
         panel2.validate();
         panel2.repaint();       
     }
+    public void auto_move(){
+        Random generator = new Random();
+        int k = 0;
+        int l = 0;        
+        k = generator.nextInt(5);
+        l = generator.nextInt(5);
+        if ((k > 0) & (k < 4) & (l > 0) & (l < 4)) 
+        {
+            if (numbers[k - 1][l] == 0)
+            {                    
+                 numbers[k - 1][l] = numbers[k][l];
+                 numbers[k][l] = 0;
+            }
+            if (numbers[k + 1][l] == 0)
+            {
+                 numbers[k + 1][l] = numbers[k][l];
+                 numbers[k][l] = 0;
+            }
+            if (numbers[k][l - 1] == 0)
+            {
+                 numbers[k][l - 1] = numbers[k][l];
+                 numbers[k][l] = 0;
+            }
+                if (numbers[k][l + 1] == 0)
+                {
+                    numbers[k][l + 1] = numbers[k][l];
+                    numbers[k][l] = 0;
+                }
+            }
+
+            if ((k == 0) & (l > 0) & (l < 4)) 
+            {
+                if (numbers[k + 1][l] == 0)
+                {
+                    numbers[k + 1][l] = numbers[k][l];
+                    numbers[k][l] = 0;
+                }
+                if (numbers[k][l - 1] == 0)
+                {
+                    numbers[k][l - 1] = numbers[k][l];
+                    numbers[k][l] = 0;
+                }
+                if (numbers[k][l + 1] == 0)
+                {
+                    numbers[k][l + 1] = numbers[k][l];
+                    numbers[k][l] = 0;
+                }
+            }
+
+            if ((k == 4) & (l > 0) & (l < 4)) 
+            {
+                if (numbers[k - 1][l] == 0)
+                {
+                    numbers[k - 1][l] = numbers[k][l];
+                    numbers[k][l] = 0;
+                }
+                if (numbers[k][l - 1] == 0)
+                {
+                    numbers[k][l - 1] = numbers[k][l];
+                    numbers[k][l] = 0;
+                }
+                if (numbers[k][l + 1] == 0)
+                {
+                    numbers[k][l + 1] = numbers[k][l];
+                    numbers[k][l] = 0;
+                }
+            }
+
+            if ((k > 0) & (k < 4) & (l == 0)) 
+            {
+                if (numbers[k - 1][l] == 0)
+                {
+                    numbers[k - 1][l] = numbers[k][l];
+                    numbers[k][l] = 0;
+                }
+                if (numbers[k + 1][l] == 0)
+                {
+                    numbers[k + 1][l] = numbers[k][l];
+                    numbers[k][l] = 0;
+                }
+                if (numbers[k][l + 1] == 0)
+                {
+                    numbers[k][l + 1] = numbers[k][l];
+                    numbers[k][l] = 0;
+                }
+            }
+
+            if ((k > 0) & (k < 4) & (l == 4)) 
+            {
+                if (numbers[k - 1][l] == 0)
+                {
+                    numbers[k - 1][l] = numbers[k][l];
+                    numbers[k][l] = 0;
+                }
+                if (numbers[k + 1][l] == 0)
+                {
+                    numbers[k + 1][l] = numbers[k][l];
+                    numbers[k][l] = 0;
+                }
+                if (numbers[k][l - 1] == 0)
+                {
+                    numbers[k][l - 1] = numbers[k][l];
+                    numbers[k][l] = 0;
+                }
+            }
+
+            if ((k == 0) & (l == 0)) 
+            {
+                if (numbers[k + 1][l] == 0)
+                {
+                    numbers[k + 1][l] = numbers[k][l];
+                    numbers[k][l] = 0;
+                }
+                if (numbers[k][l + 1] == 0)
+                {
+                    numbers[k][l + 1] = numbers[k][l];
+                    numbers[k][l] = 0;
+                }
+            }
+
+            if ((k == 0) & (l == 4)) 
+            {
+                if (numbers[k + 1][l] == 0)
+                {
+                    numbers[k + 1][l] = numbers[k][l];
+                    numbers[k][l] = 0;
+                }
+                if (numbers[k][l - 1] == 0)
+                {
+                    numbers[k][l - 1] = numbers[k][l];
+                    numbers[k][l] = 0;
+                }
+            }
+
+            if ((k == 4) & (l == 0)) 
+            {
+                if (numbers[k - 1][l] == 0)
+                {
+                    numbers[k - 1][l] = numbers[k][l];
+                    numbers[k][l] = 0;
+                }
+                if (numbers[k][l + 1] == 0)
+                {
+                    numbers[k][l + 1] = numbers[k][l];
+                    numbers[k][l] = 0;
+                }
+            }
+
+            if ((k == 4) & (l == 4)) 
+            {
+                if (numbers[k - 1][l] == 0)
+                {
+                    numbers[k - 1][l] = numbers[k][l];
+                    numbers[k][l] = 0;
+                }
+                if (numbers[k][l - 1] == 0)
+                {
+                    numbers[k][l - 1] = numbers[k][l];
+                    numbers[k][l] = 0;
+                }
+            }
+        return;
+    }
+    public void generate() {      
+        for (int i = 0; i < 5; i++) 
+        {
+            for (int j = 0; j < 5; j++)
+            {
+                numbers[i][j] = i * 5 + j;     
+            }
+        }        
+        int count = 0;
+        while( count < 5000)
+        {          
+            auto_move();
+            count ++;   
+            
+        }  
+        while (numbers[4][4] !=0 ){
+            auto_move();
+        }
+    }
+    
     /**
      * 
      * @param args 
