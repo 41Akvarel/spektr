@@ -20,7 +20,9 @@ import java.util.Random;
 public class Spektr extends JFrame {
     private JPanel panel = new JPanel();
     private JPanel panel2 = new JPanel(new GridLayout(5, 5, 2, 2));    
-    private int[][] numbers = new int[5][5];    
+    private int[][] numbers = new int[5][5];   
+    private int button_width;
+    private int button_height;
 
     /**
      *
@@ -37,8 +39,8 @@ public class Spektr extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         JButton button; 
         button = new JButton("Новая игра");
-        int button_width = (int)getWidth() / 3;
-        int button_height =  (int)getHeight() / 10;
+        button_width = (int)getWidth() / 3;
+        button_height =  (int)getHeight() / 10;
         button.setSize(button_width, button_height);
         button.setLocation(2,5);
         button.setBackground(Color.red);
@@ -51,14 +53,11 @@ public class Spektr extends JFrame {
         panel.validate();
         panel.repaint();
         generate();
-        DrawField(button_height, button_width);
+        DrawField();
         setLayout(null);
         panel.setBounds(0, 0, button_width * 3, button_height);        
         add(panel);
         add(panel2);     
-        
-        
-    
     }
     
     
@@ -145,15 +144,14 @@ public class Spektr extends JFrame {
                     break;         
         }
                 
-    }
-    
+    }  
 
     /**
      * nbnb
      * @param button_height hghg1hh
      * @param button_width mbjbj
      */
-    public void DrawField(int button_height, int button_width) //Отображение на экране заданного поля
+    public void DrawField() //Отображение на экране заданного поля
     {
         panel2.removeAll();
         for (int i = 0; i < 5; i++) {
@@ -174,6 +172,7 @@ public class Spektr extends JFrame {
         panel2.validate();
         panel2.repaint();       
     }
+    
     public void auto_move(){
         Random generator = new Random();
         int k = 0;
@@ -364,12 +363,52 @@ public class Spektr extends JFrame {
             String name = button.getText();
             change(Integer.parseInt(name));
         }
-
-        private void change(int parseInt) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
     }    
     
+    public void change(int number)
+    {
+        int i = 0;
+        int j = 0;
+        for (int k = 0; k < 5; k++)
+        {
+            for (int l = 0; l < 5; l++)
+            {
+                if (numbers[k][l] == number)
+                {
+                    i = k;
+                    j = l;
+                }
+            }            
+        }
+        if (i > 0)
+        {
+            if (numbers[i - 1][j] == 0)
+            {
+                numbers[i - 1][j] = number;
+                numbers[i][j] = 0;
+            }
+        }
+        if (i < 4) {
+            if (numbers[i + 1][j] == 0) {
+                numbers[i + 1][j] = number;
+                numbers[i][j] = 0;
+            }
+        }
+        if (j > 0) {
+            if (numbers[i][j - 1] == 0) {
+                numbers[i][j - 1] = number;
+                numbers[i][j] = 0;
+            }
+        }
+        if (j < 4) {
+            if (numbers[i][j + 1] == 0) {
+                numbers[i][j + 1] = number;
+                numbers[i][j] = 0;
+            }
+        }
+        DrawField();
+    }
+
     /**
      * 
      * @param args 
