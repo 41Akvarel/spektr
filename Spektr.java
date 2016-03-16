@@ -13,10 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
-/**
- *
- * @author км
- */
+
 public class Spektr extends JFrame {
     private JPanel panel = new JPanel();
     private JPanel panel2 = new JPanel(new GridLayout(5, 5, 2, 2));    
@@ -172,7 +169,10 @@ public class Spektr extends JFrame {
         panel2.validate();
         panel2.repaint();       
     }
-    
+    /**
+     * 
+     * 
+     */
     public void auto_move(){
         Random generator = new Random();
         int k = 0;
@@ -365,6 +365,19 @@ public class Spektr extends JFrame {
         }
     }    
     
+    public boolean checkWin() { //Проверка на выигрыш
+        boolean status = true;
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                if (i == 4 && j > 3)
+                    break;
+                if (numbers[i][j] != i * 5 + j + 1) {
+                    status = false;
+                }
+            }
+        }
+        return status;
+    }
     public void change(int number)
     {
         int i = 0;
@@ -407,6 +420,8 @@ public class Spektr extends JFrame {
             }
         }
         DrawField();
+        
+        
     }
 
     /**
@@ -418,6 +433,3 @@ public class Spektr extends JFrame {
         app.setVisible(true);
     }
 }
-
-    
-
