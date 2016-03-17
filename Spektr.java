@@ -345,7 +345,7 @@ public class Spektr extends JFrame {
             }
         }        
         int count = 0;
-        while( count < 5000)
+        while( count < 1000)
         {          
             auto_move();
             count ++;   
@@ -420,7 +420,12 @@ public class Spektr extends JFrame {
             }
         }
         DrawField();
-        
+        if (checkWin()) {
+            JOptionPane.showMessageDialog(null, "Вы выиграли", "Поздравляем!", JOptionPane.INFORMATION_MESSAGE);
+            generate();
+            DrawField();
+        }
+
         
     }
 
