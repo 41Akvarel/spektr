@@ -32,8 +32,11 @@ public class Spektr extends JFrame {
         int screenheight;
         screenheight = (int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 2);
         setSize(screenheight, screenheight);        
-        setResizable(true);
+        setResizable(false);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+       
+        
+        
         JButton button; 
         button = new JButton("Новая игра");
         button_width = (int)getWidth() / 3;
@@ -42,6 +45,8 @@ public class Spektr extends JFrame {
         button.setLocation(2,5);
         button.setBackground(Color.red);
         panel.add(button);
+        
+        
         Container container = getContentPane();
         panel.setDoubleBuffered(true);
         container.add(panel);
