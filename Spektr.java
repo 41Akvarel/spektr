@@ -34,9 +34,7 @@ public class Spektr extends JFrame {
         setSize(screenheight, screenheight);        
         setResizable(false);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-       
-        
-        
+          
         JButton button; 
         button = new JButton("Новая игра");
         button_width = (int)getWidth() / 3;
@@ -45,8 +43,9 @@ public class Spektr extends JFrame {
         button.setLocation(2,5);
         button.setBackground(Color.red);
         panel.add(button);
-        
-        
+        button.addActionListener(new NewMenuListener());
+       
+               
         Container container = getContentPane();
         panel.setDoubleBuffered(true);
         container.add(panel);
@@ -59,10 +58,20 @@ public class Spektr extends JFrame {
         setLayout(null);
         panel.setBounds(0, 0, button_width * 3, button_height);        
         add(panel);
-        add(panel2);     
+        add(panel2);
+        
     }
     
-    
+    private class NewMenuListener implements ActionListener { //Перемешиваем квадраты, при нажатии на кнопку "Новая игра"
+        public void actionPerformed(ActionEvent e) {
+            String command = e.getActionCommand();
+            
+            if ("Новая игра".equals(command)) {
+                generate();
+                DrawField();
+            }
+        }
+    }
     /**
      * Задаем цвет для кнопок
      * @param number номер кнопки
@@ -153,6 +162,7 @@ public class Spektr extends JFrame {
      * @param button_height hghg1hh
      * @param button_width mbjbj
      */
+    
     public void DrawField() //Отображение на экране заданного поля
     {
         panel2.removeAll();
@@ -361,13 +371,15 @@ public class Spektr extends JFrame {
         }
     }
     
+    
     private class ClickListener implements ActionListener {
+       
         public void actionPerformed(ActionEvent e) {
             JButton button = (JButton) e.getSource();
             button.setVisible(false);
             String name = button.getText();
             change(Integer.parseInt(name));
-        }
+            }
     }    
     
     public boolean checkWin() { //Проверка на выигрыш
