@@ -37,6 +37,7 @@ public class Spektr extends JFrame {
           
         JButton button; 
         button = new JButton("Новая игра");
+        button.setFocusable(false);
         button_width = (int)getWidth() / 3;
         button_height =  (int)getHeight() / 10;
         button.setSize(button_width, button_height);
