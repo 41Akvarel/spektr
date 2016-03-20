@@ -17,7 +17,7 @@ import java.util.Random;
 public class Spektr extends JFrame {
     private JPanel panel = new JPanel();
     private JPanel panel2 = new JPanel(new GridLayout(5, 5, 2, 2));    
-    private int[][] numbers = new int[5][5];   
+    public int[][] numbers = new int[5][5];   
     private int button_width;
     private int button_height;
 
@@ -185,6 +185,153 @@ public class Spektr extends JFrame {
         panel2.validate();
         panel2.repaint();       
     }
+    public void CentBut(int str, int stolb)
+    {
+        if (numbers[str - 1][stolb] == 0)
+        {                    
+            numbers[str - 1][stolb] = numbers[str][stolb];
+            numbers[str][stolb] = 0;
+        }
+        if (numbers[str + 1][stolb] == 0)
+        {
+            numbers[str + 1][stolb] = numbers[str][stolb];
+            numbers[str][stolb] = 0;
+        }
+        if (numbers[str][stolb - 1] == 0)
+        {
+            numbers[str][stolb - 1] = numbers[str][stolb];
+            numbers[str][stolb] = 0;
+        }
+        if (numbers[str][stolb + 1] == 0)
+        {
+            numbers[str][stolb + 1] = numbers[str][stolb];
+            numbers[str][stolb] = 0;
+        }
+    }
+    public void TopBut(int str, int stolb)
+    {
+        if (numbers[str + 1][stolb] == 0)
+        {
+            numbers[str + 1][stolb] = numbers[str][stolb];
+            numbers[str][stolb] = 0;
+        }
+        if (numbers[str][stolb - 1] == 0)
+        {
+            numbers[str][stolb - 1] = numbers[str][stolb];
+            numbers[str][stolb] = 0;
+        }
+        if (numbers[str][stolb + 1] == 0)
+        {
+            numbers[str][stolb + 1] = numbers[str][stolb];
+            numbers[str][stolb] = 0;
+        }
+    }
+    public void DownBut(int str, int stolb)
+    {
+        if (numbers[str - 1][stolb] == 0)
+        {
+            numbers[str - 1][stolb] = numbers[str][stolb];
+            numbers[str][stolb] = 0;
+        }
+        if (numbers[str][stolb - 1] == 0)
+        {
+            numbers[str][stolb - 1] = numbers[str][stolb];
+            numbers[str][stolb] = 0;
+        }
+        if (numbers[str][stolb + 1] == 0)
+        {
+            numbers[str][stolb + 1] = numbers[str][stolb];
+            numbers[str][stolb] = 0;
+        }
+    }
+    public void LeftBut(int str, int stolb)
+    {
+        if (numbers[str - 1][stolb] == 0)
+        {
+            numbers[str - 1][stolb] = numbers[str][stolb];
+            numbers[str][stolb] = 0;
+        }
+        if (numbers[str + 1][stolb] == 0)
+        {
+            numbers[str + 1][stolb] = numbers[str][stolb];
+            numbers[str][stolb] = 0;
+        }
+        if (numbers[str][stolb + 1] == 0)
+        {
+            numbers[str][stolb + 1] = numbers[str][stolb];
+            numbers[str][stolb] = 0;
+        }
+    }
+    public void RightBut(int str, int stolb)
+    {
+        if (numbers[str - 1][stolb] == 0)
+        {
+            numbers[str - 1][stolb] = numbers[str][stolb];
+            numbers[str][stolb] = 0;
+        }
+        if (numbers[str + 1][stolb] == 0)
+        {
+            numbers[str + 1][stolb] = numbers[str][stolb];
+            numbers[str][stolb] = 0;
+        }
+        if (numbers[str][stolb - 1] == 0)
+        {
+            numbers[str][stolb - 1] = numbers[str][stolb];
+            numbers[str][stolb] = 0;
+        }
+    }
+    public void CorLeftTopBut(int str, int stolb)
+    {
+        if (numbers[str + 1][stolb] == 0)
+        {
+            numbers[str + 1][stolb] = numbers[str][stolb];
+            numbers[str][stolb] = 0;
+        }
+        if (numbers[str][stolb + 1] == 0)
+        {
+            numbers[str][stolb + 1] = numbers[str][stolb];
+            numbers[str][stolb] = 0;
+        }
+    }
+    public void CorRigTopBut(int str, int stolb)
+    {
+        if (numbers[str + 1][stolb] == 0)
+        {
+            numbers[str + 1][stolb] = numbers[str][stolb];
+            numbers[str][stolb] = 0;
+        }
+        if (numbers[str][stolb - 1] == 0)
+        {
+            numbers[str][stolb - 1] = numbers[str][stolb];
+            numbers[str][stolb] = 0;
+        }
+    }
+    public void CorLeftDownBut(int str, int stolb)
+    {
+        if (numbers[str - 1][stolb] == 0)
+        {
+            numbers[str - 1][stolb] = numbers[str][stolb];
+            numbers[str][stolb] = 0;
+        }
+        if (numbers[str][stolb + 1] == 0)
+        {
+            numbers[str][stolb + 1] = numbers[str][stolb];
+            numbers[str][stolb] = 0;
+        }
+    }
+    public void CorRigDownBut(int str, int stolb)
+    {
+        if (numbers[str - 1][stolb] == 0)
+        {
+            numbers[str - 1][stolb] = numbers[str][stolb];
+            numbers[str][stolb] = 0;
+        }
+        if (numbers[str][stolb - 1] == 0)
+        {
+            numbers[str][stolb - 1] = numbers[str][stolb];
+            numbers[str][stolb] = 0;
+        }
+    }
     /**
      * 
      * 
@@ -197,160 +344,41 @@ public class Spektr extends JFrame {
         l = generator.nextInt(5);
         if ((k > 0) & (k < 4) & (l > 0) & (l < 4)) 
         {
-            if (numbers[k - 1][l] == 0)
-            {                    
-                 numbers[k - 1][l] = numbers[k][l];
-                 numbers[k][l] = 0;
-            }
-            if (numbers[k + 1][l] == 0)
-            {
-                 numbers[k + 1][l] = numbers[k][l];
-                 numbers[k][l] = 0;
-            }
-            if (numbers[k][l - 1] == 0)
-            {
-                 numbers[k][l - 1] = numbers[k][l];
-                 numbers[k][l] = 0;
-            }
-                if (numbers[k][l + 1] == 0)
-                {
-                    numbers[k][l + 1] = numbers[k][l];
-                    numbers[k][l] = 0;
-                }
-            }
-
-            if ((k == 0) & (l > 0) & (l < 4)) 
-            {
-                if (numbers[k + 1][l] == 0)
-                {
-                    numbers[k + 1][l] = numbers[k][l];
-                    numbers[k][l] = 0;
-                }
-                if (numbers[k][l - 1] == 0)
-                {
-                    numbers[k][l - 1] = numbers[k][l];
-                    numbers[k][l] = 0;
-                }
-                if (numbers[k][l + 1] == 0)
-                {
-                    numbers[k][l + 1] = numbers[k][l];
-                    numbers[k][l] = 0;
-                }
-            }
-
-            if ((k == 4) & (l > 0) & (l < 4)) 
-            {
-                if (numbers[k - 1][l] == 0)
-                {
-                    numbers[k - 1][l] = numbers[k][l];
-                    numbers[k][l] = 0;
-                }
-                if (numbers[k][l - 1] == 0)
-                {
-                    numbers[k][l - 1] = numbers[k][l];
-                    numbers[k][l] = 0;
-                }
-                if (numbers[k][l + 1] == 0)
-                {
-                    numbers[k][l + 1] = numbers[k][l];
-                    numbers[k][l] = 0;
-                }
-            }
-
-            if ((k > 0) & (k < 4) & (l == 0)) 
-            {
-                if (numbers[k - 1][l] == 0)
-                {
-                    numbers[k - 1][l] = numbers[k][l];
-                    numbers[k][l] = 0;
-                }
-                if (numbers[k + 1][l] == 0)
-                {
-                    numbers[k + 1][l] = numbers[k][l];
-                    numbers[k][l] = 0;
-                }
-                if (numbers[k][l + 1] == 0)
-                {
-                    numbers[k][l + 1] = numbers[k][l];
-                    numbers[k][l] = 0;
-                }
-            }
-
-            if ((k > 0) & (k < 4) & (l == 4)) 
-            {
-                if (numbers[k - 1][l] == 0)
-                {
-                    numbers[k - 1][l] = numbers[k][l];
-                    numbers[k][l] = 0;
-                }
-                if (numbers[k + 1][l] == 0)
-                {
-                    numbers[k + 1][l] = numbers[k][l];
-                    numbers[k][l] = 0;
-                }
-                if (numbers[k][l - 1] == 0)
-                {
-                    numbers[k][l - 1] = numbers[k][l];
-                    numbers[k][l] = 0;
-                }
-            }
-
-            if ((k == 0) & (l == 0)) 
-            {
-                if (numbers[k + 1][l] == 0)
-                {
-                    numbers[k + 1][l] = numbers[k][l];
-                    numbers[k][l] = 0;
-                }
-                if (numbers[k][l + 1] == 0)
-                {
-                    numbers[k][l + 1] = numbers[k][l];
-                    numbers[k][l] = 0;
-                }
-            }
-
-            if ((k == 0) & (l == 4)) 
-            {
-                if (numbers[k + 1][l] == 0)
-                {
-                    numbers[k + 1][l] = numbers[k][l];
-                    numbers[k][l] = 0;
-                }
-                if (numbers[k][l - 1] == 0)
-                {
-                    numbers[k][l - 1] = numbers[k][l];
-                    numbers[k][l] = 0;
-                }
-            }
-
-            if ((k == 4) & (l == 0)) 
-            {
-                if (numbers[k - 1][l] == 0)
-                {
-                    numbers[k - 1][l] = numbers[k][l];
-                    numbers[k][l] = 0;
-                }
-                if (numbers[k][l + 1] == 0)
-                {
-                    numbers[k][l + 1] = numbers[k][l];
-                    numbers[k][l] = 0;
-                }
-            }
-
-            if ((k == 4) & (l == 4)) 
-            {
-                if (numbers[k - 1][l] == 0)
-                {
-                    numbers[k - 1][l] = numbers[k][l];
-                    numbers[k][l] = 0;
-                }
-                if (numbers[k][l - 1] == 0)
-                {
-                    numbers[k][l - 1] = numbers[k][l];
-                    numbers[k][l] = 0;
-                }
-            }
-        return;
+            CentBut(k, l);
+        }
+        if ((k == 0) & (l > 0) & (l < 4)) 
+        {
+            TopBut(k, l);                
+        }
+        if ((k == 4) & (l > 0) & (l < 4)) 
+        {
+            DownBut(k, l);
+        }
+        if ((k > 0) & (k < 4) & (l == 0)) 
+        {
+            LeftBut(k, l);        
+        }
+        if ((k > 0) & (k < 4) & (l == 4)) 
+        {
+            RightBut(k, l);
+        }
+        if ((k == 0) & (l == 0)) 
+        {
+            CorLeftTopBut(k, l);
+        }
+        if ((k == 0) & (l == 4)) 
+        {
+            CorRigTopBut(k, l);
+        }
+        if ((k == 4) & (l == 0)) 
+        {
+            CorLeftDownBut(k, l);
+        }
+        if ((k == 4) & (l == 4)) 
+        {
+            CorRigDownBut(k, l);            
+        }
+       
     }
     public void generate() {      
         for (int i = 0; i < 5; i++) 
@@ -442,9 +470,7 @@ public class Spektr extends JFrame {
             JOptionPane.showMessageDialog(null, "Вы выиграли", "Поздравляем!", JOptionPane.INFORMATION_MESSAGE);
             generate();
             DrawField();
-        }
-
-        
+        }      
     }
 
     /**
