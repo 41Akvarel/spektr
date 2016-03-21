@@ -6,29 +6,30 @@
 
 package akvarel;
 
-import static de.dislin.Dislin.frame;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
-
-public class Spektr extends JFrame {
-    private JPanel panel = new JPanel();
-    private JPanel panel2 = new JPanel(new GridLayout(5, 5, 2, 2));    
+/**
+ * Игра "Спектр".
+ * @author Акварель.
+ */
+public final class Spektr extends JFrame {
+    private final JPanel panel = new JPanel();
+    private final JPanel panel2 = new JPanel(new GridLayout(5, 5, 2, 2));    
     public int[][] numbers = new int[5][5];   
-    private int button_width;
-    private int button_height;
+    private final int button_width;
+    private final int button_height;
 
-    /**
-     *
-     */
-    public  Spektr()//создание интерфейса игры
+   /**
+    * Создание интерфейса приложение.
+    */
+    public  Spektr()
     {
         super("Спектр");
-        panel.setLayout(null);        
-        getContentPane().setBackground(new Color(255, 255, 255));      
+        panel.setLayout(null);             
         int screenheight;
         screenheight = (int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 2);
         setSize(screenheight, screenheight);        
@@ -48,6 +49,7 @@ public class Spektr extends JFrame {
        
                
         Container container = getContentPane();
+        container.setBackground(new Color(255, 255, 255));
         panel.setDoubleBuffered(true);
         container.add(panel);
         container.add(panel2);
@@ -59,11 +61,13 @@ public class Spektr extends JFrame {
         setLayout(null);
         panel.setBounds(0, 0, button_width * 3, button_height);        
         add(panel);
-        add(panel2);
-        
+        add(panel2);        
     }
-    
-    private class NewMenuListener implements ActionListener { //Перемешиваем квадраты, при нажатии на кнопку "Новая игра"
+    /**
+     * Перемешивание квадратов при нажатии на кнопку "Новая игра".
+     */
+    private class NewMenuListener implements ActionListener { 
+        @Override
         public void actionPerformed(ActionEvent e) {
             String command = e.getActionCommand();
             
@@ -74,9 +78,9 @@ public class Spektr extends JFrame {
         }
     }
     /**
-     * Задаем цвет для кнопок
-     * @param number номер кнопки
-     * @param but кнопка
+     * Задаем цвет для кнопок.
+     * @param number значение указанное на кнопке.
+     * @param but кнопка.
      */
     public void ColorButton(int number, JButton but)
     {
@@ -159,12 +163,9 @@ public class Spektr extends JFrame {
     }  
 
     /**
-     * nbnb
-     * @param button_height hghg1hh
-     * @param button_width mbjbj
-     */
-    
-    public void DrawField() //Отображение на экране заданного поля
+     * Отображение на экране заданного поля.
+     */    
+    public void DrawField() 
     {
         panel2.removeAll();
         for (int i = 0; i < 5; i++) {
@@ -185,156 +186,45 @@ public class Spektr extends JFrame {
         panel2.validate();
         panel2.repaint();       
     }
-    public void CentBut(int str, int stolb)
-    {
-        if (numbers[str - 1][stolb] == 0)
-        {                    
-            numbers[str - 1][stolb] = numbers[str][stolb];
-            numbers[str][stolb] = 0;
-        }
-        if (numbers[str + 1][stolb] == 0)
-        {
-            numbers[str + 1][stolb] = numbers[str][stolb];
-            numbers[str][stolb] = 0;
-        }
-        if (numbers[str][stolb - 1] == 0)
-        {
-            numbers[str][stolb - 1] = numbers[str][stolb];
-            numbers[str][stolb] = 0;
-        }
-        if (numbers[str][stolb + 1] == 0)
-        {
-            numbers[str][stolb + 1] = numbers[str][stolb];
-            numbers[str][stolb] = 0;
-        }
-    }
-    public void TopBut(int str, int stolb)
-    {
-        if (numbers[str + 1][stolb] == 0)
-        {
-            numbers[str + 1][stolb] = numbers[str][stolb];
-            numbers[str][stolb] = 0;
-        }
-        if (numbers[str][stolb - 1] == 0)
-        {
-            numbers[str][stolb - 1] = numbers[str][stolb];
-            numbers[str][stolb] = 0;
-        }
-        if (numbers[str][stolb + 1] == 0)
-        {
-            numbers[str][stolb + 1] = numbers[str][stolb];
-            numbers[str][stolb] = 0;
-        }
-    }
-    public void DownBut(int str, int stolb)
-    {
-        if (numbers[str - 1][stolb] == 0)
-        {
-            numbers[str - 1][stolb] = numbers[str][stolb];
-            numbers[str][stolb] = 0;
-        }
-        if (numbers[str][stolb - 1] == 0)
-        {
-            numbers[str][stolb - 1] = numbers[str][stolb];
-            numbers[str][stolb] = 0;
-        }
-        if (numbers[str][stolb + 1] == 0)
-        {
-            numbers[str][stolb + 1] = numbers[str][stolb];
-            numbers[str][stolb] = 0;
-        }
-    }
-    public void LeftBut(int str, int stolb)
-    {
-        if (numbers[str - 1][stolb] == 0)
-        {
-            numbers[str - 1][stolb] = numbers[str][stolb];
-            numbers[str][stolb] = 0;
-        }
-        if (numbers[str + 1][stolb] == 0)
-        {
-            numbers[str + 1][stolb] = numbers[str][stolb];
-            numbers[str][stolb] = 0;
-        }
-        if (numbers[str][stolb + 1] == 0)
-        {
-            numbers[str][stolb + 1] = numbers[str][stolb];
-            numbers[str][stolb] = 0;
-        }
-    }
-    public void RightBut(int str, int stolb)
-    {
-        if (numbers[str - 1][stolb] == 0)
-        {
-            numbers[str - 1][stolb] = numbers[str][stolb];
-            numbers[str][stolb] = 0;
-        }
-        if (numbers[str + 1][stolb] == 0)
-        {
-            numbers[str + 1][stolb] = numbers[str][stolb];
-            numbers[str][stolb] = 0;
-        }
-        if (numbers[str][stolb - 1] == 0)
-        {
-            numbers[str][stolb - 1] = numbers[str][stolb];
-            numbers[str][stolb] = 0;
-        }
-    }
-    public void CorLeftTopBut(int str, int stolb)
-    {
-        if (numbers[str + 1][stolb] == 0)
-        {
-            numbers[str + 1][stolb] = numbers[str][stolb];
-            numbers[str][stolb] = 0;
-        }
-        if (numbers[str][stolb + 1] == 0)
-        {
-            numbers[str][stolb + 1] = numbers[str][stolb];
-            numbers[str][stolb] = 0;
-        }
-    }
-    public void CorRigTopBut(int str, int stolb)
-    {
-        if (numbers[str + 1][stolb] == 0)
-        {
-            numbers[str + 1][stolb] = numbers[str][stolb];
-            numbers[str][stolb] = 0;
-        }
-        if (numbers[str][stolb - 1] == 0)
-        {
-            numbers[str][stolb - 1] = numbers[str][stolb];
-            numbers[str][stolb] = 0;
-        }
-    }
-    public void CorLeftDownBut(int str, int stolb)
-    {
-        if (numbers[str - 1][stolb] == 0)
-        {
-            numbers[str - 1][stolb] = numbers[str][stolb];
-            numbers[str][stolb] = 0;
-        }
-        if (numbers[str][stolb + 1] == 0)
-        {
-            numbers[str][stolb + 1] = numbers[str][stolb];
-            numbers[str][stolb] = 0;
-        }
-    }
-    public void CorRigDownBut(int str, int stolb)
-    {
-        if (numbers[str - 1][stolb] == 0)
-        {
-            numbers[str - 1][stolb] = numbers[str][stolb];
-            numbers[str][stolb] = 0;
-        }
-        if (numbers[str][stolb - 1] == 0)
-        {
-            numbers[str][stolb - 1] = numbers[str][stolb];
-            numbers[str][stolb] = 0;
-        }
-    }
+    
     /**
-     * 
-     * 
+     * Функция меняет местами две кнопки.
+     * @param str Номер строки, в которой находится перемещаемая кнопка.  
+     * @param stolb Номер столбца, в котором находится перемещаемая кнопка.
+     * @param number Цифра, которая расположена на перемещаемой кнопке.
+     */
+    public void move(int str, int stolb, int number)
+    {
+        if (str > 0)
+        {
+            if (numbers[str - 1][stolb] == 0)
+            {
+                numbers[str - 1][stolb] = number;
+                numbers[str][stolb] = 0;
+            }
+        }
+        if (str < 4) {
+            if (numbers[str + 1][stolb] == 0) {
+                numbers[str + 1][stolb] = number;
+                numbers[str][stolb] = 0;
+            }
+        }
+        if (stolb > 0) {
+            if (numbers[str][stolb - 1] == 0) {
+                numbers[str][stolb - 1] = number;
+                numbers[str][stolb] = 0;
+            }
+        }
+        if (stolb < 4) {
+            if (numbers[str][stolb + 1] == 0) {
+                numbers[str][stolb + 1] = number;
+                numbers[str][stolb] = 0;
+            }
+        }
+    }
+    
+    /**
+     * Функция меняет местами 2 произвольные кнопки.
      */
     public void auto_move(){
         Random generator = new Random();
@@ -342,44 +232,11 @@ public class Spektr extends JFrame {
         int l = 0;        
         k = generator.nextInt(5);
         l = generator.nextInt(5);
-        if ((k > 0) & (k < 4) & (l > 0) & (l < 4)) 
-        {
-            CentBut(k, l);
-        }
-        if ((k == 0) & (l > 0) & (l < 4)) 
-        {
-            TopBut(k, l);                
-        }
-        if ((k == 4) & (l > 0) & (l < 4)) 
-        {
-            DownBut(k, l);
-        }
-        if ((k > 0) & (k < 4) & (l == 0)) 
-        {
-            LeftBut(k, l);        
-        }
-        if ((k > 0) & (k < 4) & (l == 4)) 
-        {
-            RightBut(k, l);
-        }
-        if ((k == 0) & (l == 0)) 
-        {
-            CorLeftTopBut(k, l);
-        }
-        if ((k == 0) & (l == 4)) 
-        {
-            CorRigTopBut(k, l);
-        }
-        if ((k == 4) & (l == 0)) 
-        {
-            CorLeftDownBut(k, l);
-        }
-        if ((k == 4) & (l == 4)) 
-        {
-            CorRigDownBut(k, l);            
-        }
-       
+        move(k, l, numbers[k][l]);      
     }
+    /**
+     * Функция произвольно перемешивает кнопки на поле в начале игры.
+     */
     public void generate() {      
         for (int i = 0; i < 5; i++) 
         {
@@ -400,9 +257,12 @@ public class Spektr extends JFrame {
         }
     }
     
-    
+    /**
+     * Класс вызывает функции перемещения кнопок при нажатии на любую из них.
+     */
     private class ClickListener implements ActionListener {
        
+        @Override
         public void actionPerformed(ActionEvent e) {
             JButton button = (JButton) e.getSource();
             button.setVisible(false);
@@ -410,8 +270,11 @@ public class Spektr extends JFrame {
             change(Integer.parseInt(name));
             }
     }    
-    
-    public boolean checkWin() { //Проверка на выигрыш
+    /**
+     * Проверка на выигрыш
+     * @return выиграли или еще нет 
+     */
+    public boolean checkWin() { 
         boolean status = true;
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
@@ -424,6 +287,10 @@ public class Spektr extends JFrame {
         }
         return status;
     }
+    /**
+     * Сдвиг выбранной кнопке на соседнее пустое место.
+     * @param number Цифра на выбранной кнопке.
+     */
     public void change(int number)
     {
         int i = 0;
@@ -439,32 +306,7 @@ public class Spektr extends JFrame {
                 }
             }            
         }
-        if (i > 0)
-        {
-            if (numbers[i - 1][j] == 0)
-            {
-                numbers[i - 1][j] = number;
-                numbers[i][j] = 0;
-            }
-        }
-        if (i < 4) {
-            if (numbers[i + 1][j] == 0) {
-                numbers[i + 1][j] = number;
-                numbers[i][j] = 0;
-            }
-        }
-        if (j > 0) {
-            if (numbers[i][j - 1] == 0) {
-                numbers[i][j - 1] = number;
-                numbers[i][j] = 0;
-            }
-        }
-        if (j < 4) {
-            if (numbers[i][j + 1] == 0) {
-                numbers[i][j + 1] = number;
-                numbers[i][j] = 0;
-            }
-        }
+        move(i, j, number);
         DrawField();
         if (checkWin()) {
             JOptionPane.showMessageDialog(null, "Вы выиграли", "Поздравляем!", JOptionPane.INFORMATION_MESSAGE);
@@ -473,10 +315,7 @@ public class Spektr extends JFrame {
         }      
     }
 
-    /**
-     * 
-     * @param args 
-     */
+
     public static void main(String[] args) {
         JFrame app = new Spektr();        
         app.setVisible(true);
