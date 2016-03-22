@@ -6,24 +6,21 @@
 
 import akvarel.Spektr;
 import junit.framework.TestCase;
-import org.junit.After;
-import org.junit.Before;
-
 
 /**
- *
- * @author км
+ * Проверка функции выигрыша
+ * @author Акварель
  */
 public class chekWinJUnitTest extends TestCase{
     
     Spektr spektr;    
     
-    @Before
+    @Override
     public void setUp() {
         spektr = new Spektr();
     }
     
-    @After
+    @Override
     public void tearDown() {
         spektr = null;
     }
