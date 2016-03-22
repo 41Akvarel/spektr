@@ -6,27 +6,21 @@
 
 import akvarel.Spektr;
 import junit.framework.TestCase;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
- *
- * @author км
+ * Проверка функции генерации начального поля.
+ * @author Акварель.
  */
 public class GenerateJUnitTest extends TestCase{
     
     Spektr spektr;
     
-    @Before
+    @Override
     public void setUp() {
         spektr = new Spektr();
     }
     
-    @After
+    @Override
     public void tearDown() {
         spektr = null;
     }
