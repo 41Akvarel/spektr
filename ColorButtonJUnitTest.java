@@ -7,12 +7,11 @@
 import akvarel.Spektr;
 import java.awt.Color;
 import javax.swing.JButton;
-import javax.swing.text.html.CSS;
 import junit.framework.TestCase;
 
 /**
- *
- * @author км
+ * Проверка совпадения цветов кнопок с заданными.
+ * @author Акварель.
  */
 public class ColorButtonJUnitTest extends TestCase {
     private Spektr spektr;
@@ -21,13 +20,11 @@ public class ColorButtonJUnitTest extends TestCase {
     }
     
     @Override
-    //befor
     protected void setUp() {
         spektr = new Spektr();
     }
     
     @Override
-    //AFTER
     protected void tearDown() throws Exception {
         spektr = null;
     }
