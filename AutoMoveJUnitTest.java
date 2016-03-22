@@ -5,22 +5,21 @@
  */
 
 import akvarel.Spektr;
-
 import junit.framework.TestCase;
 
 /**
- *
- * @author км
+ * Проверка правильности перемещения кнопок.
+ * @author Акварель.
  */
 public class AutoMoveJUnitTest extends TestCase{
     private Spektr spektr;
     
-    //Before
+    @Override
     public void setUp() {
         spektr = new Spektr();
     }
     
-    //After
+    @Override
     public void tearDown() {
         spektr = null;
     }
