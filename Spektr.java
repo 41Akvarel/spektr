@@ -19,6 +19,10 @@ import java.util.Random;
 public final class Spektr extends JFrame {
     private final JPanel panel = new JPanel();
     private final JPanel panel2 = new JPanel(new GridLayout(5, 5, 2, 2));    
+
+    /**
+     *Массив цифр, которые написаны на различных кнопках
+     */
     public int[][] numbers = new int[5][5];   
     private final int button_width;
     private final int button_height;
@@ -158,8 +162,7 @@ public final class Spektr extends JFrame {
                 case 24:
                     but.setBackground(new Color(136, 0, 80));
                     break;         
-        }
-                
+        }                
     }  
 
     /**
@@ -315,7 +318,10 @@ public final class Spektr extends JFrame {
         }      
     }
 
-
+/**
+ * Функция запускаемая при запуске программы
+ * @param args набор аргументов, котрые передаюся функции в момент запуска
+ */
     public static void main(String[] args) {
         JFrame app = new Spektr();        
         app.setVisible(true);
